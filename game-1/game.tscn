@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b3f4metox7v3f"]
+
+[ext_resource type="PackedScene" uid="uid://qebshkud1u41" path="res://pillar.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://yhitw6mnt1ps" path="res://player.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://c1tqbx2bim1vs" path="res://ring.tscn" id="3_feb5d"]
+
+[sub_resource type="Environment" id="Environment_80nbo"]
+background_mode = 1
+background_color = Color(0.16012296, 0.34204847, 0.6721981, 1)
+ambient_light_color = Color(0.879746, 0.8549117, 0.974181, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwb40"]
+albedo_color = Color(0.10221159, 0.63565594, 0, 1)
+roughness = 0.3
+
+[node name="game" type="Node3D" unique_id=1864475218]
+
+[node name="player" parent="." unique_id=796231102 instance=ExtResource("2_e2o6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095, 1, 6.197)
+
+[node name="Camera3D" type="Camera3D" parent="player" unique_id=1848609046]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, -0.095, 7.0596485, 6.1700883)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=217240352]
+environment = SubResource("Environment_80nbo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=151855806]
+transform = Transform3D(1, 0, 0, 0, 0.6875439, 0.7261428, 0, -0.7261428, 0.6875439, 0, 13.477976, 0)
+light_color = Color(0.9974559, 0.98070496, 0.95156235, 1)
+light_energy = 2.701
+light_specular = 2.89
+shadow_enabled = true
+
+[node name="floor" type="CSGBox3D" parent="." unique_id=1232462113]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 14.070419)
+use_collision = true
+size = Vector3(20, 1, 26.761871)
+material = SubResource("StandardMaterial3D_mwb40")
+
+[node name="Pillars" type="Node" parent="." unique_id=2143966422]
+
+[node name="pillar1" parent="Pillars" unique_id=2110096937 instance=ExtResource("1_80nbo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.3726482, 0.5, 0)
+
+[node name="pillar2" parent="Pillars" unique_id=687580897 instance=ExtResource("1_80nbo")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.7016554, 0.5, -2.4941504)
+
+[node name="pillar3" parent="Pillars" unique_id=92738568 instance=ExtResource("1_80nbo")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -3, 0.5, 2.8362)
+
+[node name="pillar4" parent="Pillars" unique_id=1803206328 instance=ExtResource("1_80nbo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.2068341, 0.5, -2.0474072)
+
+[node name="pillar5" parent="Pillars" unique_id=1731029809 instance=ExtResource("1_80nbo")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.7931659, 0.5, 1.1607435)
+
+[node name="pillar6" parent="Pillars" unique_id=865749907 instance=ExtResource("1_80nbo")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -6.9849477, 0.5, -2.047407)
+
+[node name="ring" parent="." unique_id=1126505760 instance=ExtResource("3_feb5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.071)

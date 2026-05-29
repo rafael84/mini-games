@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://qebshkud1u41"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s4roa"]
+bounce = 0.66
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s4roa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4roa"]
+albedo_color = Color(0.8456607, 0.3490577, 0.43846226, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rjv88"]
+material = SubResource("StandardMaterial3D_s4roa")
+
+[node name="pillar" type="RigidBody3D" unique_id=1803206328]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_s4roa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=825354189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_s4roa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=368645510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_rjv88")
