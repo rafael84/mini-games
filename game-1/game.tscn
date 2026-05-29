@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://b3f4metox7v3f"]
 
 [ext_resource type="PackedScene" uid="uid://qebshkud1u41" path="res://pillar.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://c5c63p0xg5dbi" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://yhitw6mnt1ps" path="res://player.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://c1tqbx2bim1vs" path="res://ring.tscn" id="3_feb5d"]
+
+[sub_resource type="SystemFont" id="SystemFont_feb5d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_feb5d"]
+font = SubResource("SystemFont_feb5d")
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0.5916666, 0.71, 1)
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 background_mode = 1
@@ -14,6 +23,25 @@ albedo_color = Color(0.10221159, 0.63565594, 0, 1)
 roughness = 0.3
 
 [node name="game" type="Node3D" unique_id=1864475218]
+script = ExtResource("1_fc0e3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=78559534]
+
+[node name="Score" type="Label" parent="CanvasLayer" unique_id=1425090223]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_bottom = 23.0
+grow_horizontal = 0
+scale = Vector2(0.99814755, 1)
+size_flags_horizontal = 10
+size_flags_vertical = 2
+text = "SCORE: 10"
+label_settings = SubResource("LabelSettings_feb5d")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="player" parent="." unique_id=796231102 instance=ExtResource("2_e2o6t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095, 1, 6.197)
@@ -59,3 +87,5 @@ transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -6.9
 
 [node name="ring" parent="." unique_id=1126505760 instance=ExtResource("3_feb5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.071)
+
+[connection signal="pin_scored" from="ring" to="." method="_on_ring_pin_scored"]
